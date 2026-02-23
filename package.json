@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "cors": "^2.8.6"
+  },
+  "name": "subnet-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrychopra/subnet-fe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/harrychopra/subnet-fe/issues"
+  },
+  "homepage": "https://github.com/harrychopra/subnet-fe#readme"
+}
