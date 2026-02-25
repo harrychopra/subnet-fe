@@ -7,16 +7,27 @@
   border: 1px solid #eee;
   border-radius: 1rem;
 }
+
 .vote-controls .inc {
   margin-right: 0.5rem;
-  cursor: pointer;
-}
-
-.vote-controls .voted {
-  color: red;
 }
 
 .vote-controls .dec {
   margin-left: 0.5rem;
+}
+
+.vote-controls .dec,
+.vote-controls .inc {
   cursor: pointer;
+  transition: transform 100ms ease;
+}
+
+.vote-controls .dec:hover,
+.vote-controls .inc:hover {
+  transform: scale(1.2);
+}
+
+.vote-controls .voted {
+  color: red;
+  font-weight: 700;
 }
