@@ -9,3 +9,11 @@ export async function fetchArticles() {
   const { articles } = await res.json();
   return articles;
 }
+
+export async function fetchArticleById(id) {
+  const res = await fetch(`${baseUrl}/${id}`);
+  if (!res.ok) await throwResponseNotOKErr(res);
+
+  const { article } = await res.json();
+  return article;
+}
