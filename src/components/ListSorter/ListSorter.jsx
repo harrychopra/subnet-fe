@@ -1,3 +1,5 @@
+import './ListSorter.css';
+
 export default function ListSorter() {
   return (
     <div>

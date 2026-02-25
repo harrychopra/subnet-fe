@@ -1,9 +1,7 @@
-const baseUrl = 'https://subnet-be.onrender.com/api/articles';
-
-import { throwResponseNotOKErr } from './error.js';
+import { baseUrl, throwResponseNotOKErr } from './base.js';
 
 export async function fetchArticles() {
-  const res = await fetch(baseUrl);
+  const res = await fetch(`${baseUrl}/articles`);
   if (!res.ok) await throwResponseNotOKErr(res);
 
   const { articles } = await res.json();
@@ -11,7 +9,7 @@ export async function fetchArticles() {
 }
 
 export async function fetchArticleById(id) {
-  const res = await fetch(`${baseUrl}/${id}`);
+  const res = await fetch(`${baseUrl}/articles/${id}`);
   if (!res.ok) await throwResponseNotOKErr(res);
 
   const { article } = await res.json();

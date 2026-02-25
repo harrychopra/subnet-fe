@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchArticles } from '../../api/articles.js';
 import ArticleCard from '../../components/ArticleCard/ArticleCard.jsx';
 import ListSorter from '../../components/ListSorter/ListSorter.jsx';
+import Loading from '../../components/Loading/Loading.jsx';
 import './Articles.css';
 
 export default function Articles() {
@@ -28,7 +29,7 @@ export default function Articles() {
 
   const { articles, error, loading } = state;
 
-  if (loading) return <p>Loading Articles...</p>;
+  if (loading) return <Loading message="articles" />;
   if (error) return <p>{error}</p>;
   if (!articles) return null;
 

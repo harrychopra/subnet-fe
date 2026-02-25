@@ -22,4 +22,5 @@ a:focus {
   display: flex;
   flex-direction: column;
   justify-content: top;
+  overflow-y: auto;
 }

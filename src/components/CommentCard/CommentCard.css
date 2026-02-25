@@ -1,0 +1,46 @@
+.comment-card {
+  padding: 0.85rem 0.65rem 0.85rem 0.65rem;
+  border-top: 1px solid #ddd;
+}
+
+.comment-card .credit-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.comment-card .body {
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  min-height: 2.5rem;
+}
+
+.comment-card .reactions {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.3rem;
+}
+
+.comment-card .votes-control {
+  font-size: 0.8rem;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: left;
+  align-items: top;
+  padding: 0.3rem 0.7rem 0.1rem 0.7rem;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+}
+.comment-card .votes-control::before {
+  content: '🖒';
+  margin-right: 0.5rem;
+}
+
+.comment-card .votes-control::after {
+  content: '🖓';
+  margin-left: 0.5rem;
+}
