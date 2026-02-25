@@ -15,3 +15,18 @@ export async function fetchArticleById(id) {
   const { article } = await res.json();
   return article;
 }
+
+export async function updateArticleVotes(id, inc_votes) {
+  const res = await fetch(`${baseUrl}/articles/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ inc_votes })
+  });
+
+  if (!res.ok) await throwResponseNotOKErr(res);
+
+  const { article: { votes } } = await res.json();
+  return votes;
+}

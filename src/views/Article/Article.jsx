@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchArticleById } from '../../api/articles.js';
+import { fetchArticleById, updateArticleVotes } from '../../api/articles.js';
 import { fetchCommentsByArticleId } from '../../api/comments.js';
 import Comments from '../../components/Comments/Comments.jsx';
 import Loading from '../../components/Loading/Loading.jsx';
+import VoteControls from '../../components/VoteControls/VoteControls.jsx';
 import './Article.css';
 
 export default function Articles() {
@@ -55,7 +56,11 @@ export default function Articles() {
         <div className="title">{title}</div>
         <div className="body">{body}</div>
         <div className="reactions">
-          <div className="votes-control">{votes}</div>
+          <VoteControls
+            id={articleId}
+            votes={votes}
+            voteHandler={updateArticleVotes}
+          />
         </div>
       </div>
       <Comments articleId={articleId} />

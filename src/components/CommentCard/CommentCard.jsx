@@ -1,3 +1,5 @@
+import { updateCommentVotes } from '../../api/comments.js';
+import VoteControls from '../VoteControls/VoteControls.jsx';
 import './CommentCard.css';
 
 export default function CommentCard({ comment }) {
@@ -13,7 +15,11 @@ export default function CommentCard({ comment }) {
       </div>
       <div className="body">{body}</div>
       <div className="reactions">
-        <div className="votes-control">{votes}</div>
+        <VoteControls
+          id={comment_id}
+          votes={votes}
+          voteHandler={updateCommentVotes}
+        />
       </div>
     </div>
   );

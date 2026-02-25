@@ -37,11 +37,7 @@ export default function Articles() {
     <div className="articles">
       <ListSorter />
       {articles.map((article, idx) => {
-        return (
-          <Link to={`/articles/${article.article_id}`} key={idx}>
-            <ArticleCard article={article} />
-          </Link>
-        );
+        return <ArticleCard article={article} key={idx + 1} />;
       })}
     </div>
   );

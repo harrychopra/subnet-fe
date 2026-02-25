@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom';
+import { updateArticleVotes } from '../../api/articles.js';
+import VoteControls from '../VoteControls/VoteControls.jsx';
 import './ArticleCard.css';
 
 export default function ArticleCard({ article }) {
-  const { topic, created_at, title, votes, comment_count } = article;
+  const { article_id, topic, created_at, title, votes, comment_count } =
+    article;
   return (
     <div className="article-card">
       <div className="credit-bar">
@@ -10,9 +14,15 @@ export default function ArticleCard({ article }) {
           {new Date(created_at).toLocaleDateString()}
         </div>
       </div>
-      <div className="title">{title}</div>
+      <div className="title">
+        <Link to={`/articles/${article_id}`}>{title}</Link>
+      </div>
       <div className="reactions">
-        <div className="votes-control">{votes}</div>
+        <VoteControls
+          id={article_id}
+          votes={votes}
+          voteHandler={updateArticleVotes}
+        />
         <div className="comment-count">{comment_count}</div>
       </div>
     </div>

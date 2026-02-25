@@ -1,0 +1,22 @@
+.vote-controls {
+  font-size: 0.8rem;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: top;
+  padding: 0.3rem 0.7rem 0.1rem 0.7rem;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+}
+.vote-controls .inc {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.vote-controls .voted {
+  color: red;
+}
+
+.vote-controls .dec {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
