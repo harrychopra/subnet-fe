@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchArticles } from '../../api/articles.js';
+import ArticleCard from '../../components/ArticleCard/ArticleCard.jsx';
+import ListSorter from '../../components/ListSorter/ListSorter.jsx';
 import './Articles.css';
 
 export default function Articles() {
@@ -32,40 +34,14 @@ export default function Articles() {
 
   return (
     <div className="articles">
-      <div>
-        <form className="sort-control">
-          <select>
-            <option>New</option>
-          </select>
-          <select>
-            <option>Asc</option>
-          </select>
-        </form>
-      </div>
-      {articles.map(
-        (
-          { article_id, title, topic, created_at, votes, comment_count },
-          idx,
-        ) => {
-          return (
-            <Link to={`/articles/${article_id}`} key={idx}>
-              <div className="article-card">
-                <div className="credit-bar">
-                  <div className="slug-name">{topic}</div>
-                  <div className="posted-ago">
-                    {new Date(created_at).toLocaleDateString()}
-                  </div>
-                </div>
-                <div className="title">{title}</div>
-                <div className="reactions">
-                  <div className="votes-control">{votes}</div>
-                  <div className="comment-count">{comment_count}</div>
-                </div>
-              </div>
-            </Link>
-          );
-        },
-      )}
+      <ListSorter />
+      {articles.map((article, idx) => {
+        return (
+          <Link to={`/articles/${article.article_id}`} key={idx}>
+            <ArticleCard article={article} />
+          </Link>
+        );
+      })}
     </div>
   );
 }

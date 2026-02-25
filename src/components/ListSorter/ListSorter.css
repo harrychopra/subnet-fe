@@ -1,0 +1,12 @@
+.sort-control {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+}
+
+.sort-control select {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.1rem 0.3rem;
+  background-color: #f3f3f3;
+}
