@@ -1,14 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import DefaultLayout from './views/DefaultLayout/DefaultLayout.jsx';
-import NotFoundLayout from './views/NotFoundLayout/NotFoundLayout.jsx';
+import DefaultLayout from './layouts/DefaultLayout/DefaultLayout.jsx';
+import NotFoundLayout from './layouts/NotFoundLayout/NotFoundLayout.jsx';
+import Articles from './views/Articles/Articles.jsx';
 
 export default function App() {
   return (
     <div className="container">
       <Routes>
         <Route element={<DefaultLayout />}>
-          <Route path="/" element={<h1>Hello World</h1>} />
+          <Route path="/" element={<Articles />} />
         </Route>
         <Route path="*" element={<NotFoundLayout />} />
       </Routes>
