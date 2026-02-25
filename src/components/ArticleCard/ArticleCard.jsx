@@ -1,3 +1,5 @@
+import './ArticleCard.css';
+
 export default function ArticleCard({ article }) {
   const { topic, created_at, title, votes, comment_count } = article;
   return (
