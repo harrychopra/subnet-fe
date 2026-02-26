@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleById, updateArticleVotes } from '../../api/articles.js';
-import { fetchCommentsByArticleId } from '../../api/comments.js';
+import CommentForm from '../../components/CommentForm/CommentForm.jsx';
 import Comments from '../../components/Comments/Comments.jsx';
 import Loading from '../../components/Loading/Loading.jsx';
 import VoteControls from '../../components/VoteControls/VoteControls.jsx';
@@ -12,6 +12,7 @@ export default function Articles() {
     article: null,
     error: null,
     loading: true,
+    showCommentForm: false,
   });
 
   const { articleId } = useParams();
@@ -32,14 +33,25 @@ export default function Articles() {
     })();
   }, [articleId]);
 
-  const { article, error, loading } = state;
+  const handleShowCommentForm = () => {
+    setState({ ...state, showCommentForm: true });
+  };
+
+  const handleHideCommentForm = () => {
+    setState({ ...state, showCommentForm: false });
+  };
+
+  const handleUnshiftNewComment = () => {
+    setState({ ...state, showCommentForm: false });
+  };
+
+  const { article, error, loading, showCommentForm } = state;
 
   if (loading) return <Loading message="article" />;
   if (error) return <p>{error}</p>;
   if (!article) return null;
 
-  const { title, topic, body, author, created_at, votes, comment_count } =
-    article;
+  const { title, topic, body, author, created_at, votes } = article;
 
   return (
     <>
@@ -61,9 +73,24 @@ export default function Articles() {
             votes={votes}
             voteHandler={updateArticleVotes}
           />
+          <div
+            className="add-comment"
+            onClick={
+              showCommentForm ? handleHideCommentForm : handleShowCommentForm
+            }>
+            {showCommentForm ? 'cancel' : 'add comment'}
+          </div>
         </div>
       </div>
-      <Comments articleId={articleId} />
+      {showCommentForm ? (
+        <CommentForm
+          articleId={articleId}
+          author={author}
+          hideCommentForm={handleHideCommentForm}
+        />
+      ) : (
+        <Comments articleId={articleId} />
+      )}
     </>
   );
 }

@@ -8,6 +8,24 @@ export async function fetchCommentsByArticleId(id) {
   return comments;
 }
 
+export async function postComment({ articleId, author, commentBody }) {
+  const res = await fetch(`${baseUrl}/articles/${articleId}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: author,
+      body: commentBody
+    })
+  });
+
+  if (!res.ok) await throwResponseNotOKErr(res);
+
+  const { comment } = await res.json();
+  return comment;
+}
+
 export async function updateCommentVotes(id, inc_votes) {
   const res = await fetch(`${baseUrl}/comments/${id}`, {
     method: 'PATCH',
