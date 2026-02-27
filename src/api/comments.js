@@ -19,11 +19,15 @@ export async function postComment({ articleId, author, commentBody }) {
       body: commentBody
     })
   });
+}
+
+export async function deleteComment(commentId) {
+  const res = await fetch(`${baseUrl}/comments/${commentId}`, {
+    method: 'DELETE'
+  });
 
   if (!res.ok) await throwResponseNotOKErr(res);
-
-  const { comment } = await res.json();
-  return comment;
+  return;
 }
 
 export async function updateCommentVotes(id, inc_votes) {

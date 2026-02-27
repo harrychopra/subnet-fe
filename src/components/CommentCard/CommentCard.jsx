@@ -2,8 +2,12 @@ import { updateCommentVotes } from '../../api/comments.js';
 import VoteControls from '../VoteControls/VoteControls.jsx';
 import './CommentCard.css';
 
-export default function CommentCard({ comment }) {
-  const { comment_id, article_id, body, votes, author, created_at } = comment;
+export default function CommentCard({
+  comment,
+  handleDeleteComment,
+  signedInUsername,
+}) {
+  const { comment_id, body, votes, author, created_at } = comment;
 
   return (
     <div className="comment-card">
@@ -20,6 +24,13 @@ export default function CommentCard({ comment }) {
           votes={votes}
           voteHandler={updateCommentVotes}
         />
+        {signedInUsername === author && (
+          <div
+            className="delete-comment"
+            onClick={() => handleDeleteComment(comment)}>
+            🗑
+          </div>
+        )}
       </div>
     </div>
   );
