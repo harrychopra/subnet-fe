@@ -4,7 +4,7 @@ import Loading from '../../components/Loading/Loading.jsx';
 import UserCard from '../../components/UserCard/UserCard.jsx';
 import './Users.css';
 
-export default function Users({ setUser }) {
+export default function Users() {
   const [state, setState] = useState({
     users: null,
     loading: true,
@@ -34,7 +34,7 @@ export default function Users({ setUser }) {
   return (
     <div className="users">
       {users.map((user, idx) => {
-        return <UserCard user={user} setUser={setUser} key={idx + 1} />;
+        return <UserCard user={user} key={idx + 1} />;
       })}
     </div>
   );

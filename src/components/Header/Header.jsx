@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useUser } from '../../context/UserContext.jsx';
 import Nav from '../Nav/Nav.jsx';
 import './Header.css';
 
-export default function Header({ user }) {
+export default function Header() {
+  const { user } = useUser();
   return (
     <header>
       <div className="menu-logo">

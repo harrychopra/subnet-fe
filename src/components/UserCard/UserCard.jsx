@@ -1,14 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/UserContext.jsx';
 import './UserCard.css';
 
-export default function UserCard({ user, setUser }) {
+export default function UserCard({ user }) {
   const { username, name, avatar_url } = user;
-
+  const navigate = useNavigate();
+  const { dispatch } = useUser();
   return (
     <div
       className="user-card"
       onClick={() => {
-        setUser(user);
+        dispatch({ type: 'SET_USER', payload: user });
+        navigate('/');
       }}>
       <div className="info">
         <div className="username">{username}</div>
