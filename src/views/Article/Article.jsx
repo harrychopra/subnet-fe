@@ -51,7 +51,8 @@ export default function Articles() {
   if (error) return <p>{error}</p>;
   if (!article) return null;
 
-  const { title, topic, body, author, created_at, votes } = article;
+  const { title, article_img_url, topic, body, author, created_at, votes } =
+    article;
 
   return (
     <>
@@ -65,8 +66,14 @@ export default function Articles() {
             {new Date(created_at).toLocaleDateString()}
           </div>
         </div>
-        <div className="title">{title}</div>
-        <div className="body">{body}</div>
+        <div className="title-image-body">
+          {article_img_url && (
+            <img src={article_img_url} alt={title} className="thumb" />
+          )}
+          <div className="title">{title}</div>
+          <div className="body">{body}</div>
+        </div>
+
         <div className="reactions">
           <VoteControls
             id={articleId}

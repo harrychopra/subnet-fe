@@ -34,11 +34,6 @@ export default function Nav() {
             Topics
           </Link>
         </li>
-        <li>
-          <Link to="/profile" onMouseDown={preventBlur}>
-            Profile
-          </Link>
-        </li>
       </ul>
     </nav>
   );
