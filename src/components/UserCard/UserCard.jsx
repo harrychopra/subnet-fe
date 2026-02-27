@@ -8,7 +8,7 @@ export default function UserCard({ user, setUser }) {
     <div
       className="user-card"
       onClick={() => {
-        setUser(username);
+        setUser(user);
       }}>
       <div className="info">
         <div className="username">{username}</div>

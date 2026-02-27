@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.user-card:last-of-type {
+  border-bottom: 1px solid #ddd;
+}
+
 .user-card .info {
   display: flex;
   flex-direction: column;

@@ -1,18 +1,22 @@
-import { Link, Links } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Nav from '../Nav/Nav.jsx';
 import './Header.css';
 
-export default function Header() {
+export default function Header({ user }) {
   return (
     <header>
       <div className="menu-logo">
-        <div className="menu">
-          <Link to="/not-implemented">&#8801;</Link>
-        </div>
+        <Nav />
         <div className="logo">
           <Link to="/">Subnet</Link>
         </div>
       </div>
-      <img className="avatar" src="../assets/avatar.png" alt="avatar" />
+      <img
+        className="avatar"
+        src={user ? user.avatar_url : '../assets/avatar.png'}
+        title={user ? user.username : 'Not logged in'}
+        alt="user avatar"
+      />
     </header>
   );
 }
