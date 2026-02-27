@@ -6,7 +6,7 @@ import ListSorter from '../../components/ListSorter/ListSorter.jsx';
 import Loading from '../../components/Loading/Loading.jsx';
 import './Articles.css';
 
-export default function Articles() {
+export default function Articles({ currentUser }) {
   const [state, setState] = useState({
     articles: null,
     error: null,
@@ -37,7 +37,13 @@ export default function Articles() {
     <div className="articles">
       <ListSorter />
       {articles.map((article, idx) => {
-        return <ArticleCard article={article} key={idx + 1} />;
+        return (
+          <ArticleCard
+            article={article}
+            currentUser={currentUser}
+            key={idx + 1}
+          />
+        );
       })}
     </div>
   );
