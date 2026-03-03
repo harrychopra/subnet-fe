@@ -7,18 +7,12 @@ export default function ListSorter({ setSearchParams }) {
     order: 'desc',
   });
 
-  // const handleChange = e => {
-  //   setfilters({ ...filters, [e.target.name]: e.target.value });
-  //   setSearchParams(filters);
-  // };
 
   const handleChange = e => {
   const nextFilters = { ...filters, [e.target.name]: e.target.value };
   setFilters(nextFilters);
   setSearchParams(nextFilters);
 };
-
-  console.log(filters);
 
   return (
     <div>
