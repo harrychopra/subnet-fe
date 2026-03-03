@@ -5,6 +5,7 @@ import DefaultLayout from './layouts/DefaultLayout/DefaultLayout.jsx';
 import NotFoundLayout from './layouts/NotFoundLayout/NotFoundLayout.jsx';
 import Article from './views/Article/Article.jsx';
 import Articles from './views/Articles/Articles.jsx';
+import Topics from './views/Topics/Topics.jsx';
 import Users from './views/Users/Users.jsx';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:articleId" element={<Article />} />
+          <Route path="/topics" element={<Topics />} />
         </Route>
         <Route path="*" element={<NotFoundLayout />} />
       </Routes>

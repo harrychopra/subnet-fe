@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../../api/articles.js';
 import ArticleCard from '../../components/ArticleCard/ArticleCard.jsx';
 import ListSorter from '../../components/ListSorter/ListSorter.jsx';
 import Loading from '../../components/Loading/Loading.jsx';
 import './Articles.css';
 
-export default function Articles({ currentUser }) {
+export default function Articles() {
   const [state, setState] = useState({
     articles: null,
     error: null,
     loading: true,
   });
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    fetchArticles()
+    const qpPairs = [...searchParams];
+    fetchArticles(qpPairs)
       .then(articles => {
         setState({ ...state, articles, loading: false });
       })
@@ -25,8 +28,9 @@ export default function Articles({ currentUser }) {
           loading: false,
         }),
       );
-  }, []);
+  }, [searchParams]);
 
+  console.log('state updated');
   const { articles, error, loading } = state;
 
   if (loading) return <Loading message="articles" />;
@@ -35,15 +39,9 @@ export default function Articles({ currentUser }) {
 
   return (
     <div className="articles">
-      <ListSorter />
+      <ListSorter setSearchParams={setSearchParams} />
       {articles.map((article, idx) => {
-        return (
-          <ArticleCard
-            article={article}
-            currentUser={currentUser}
-            key={idx + 1}
-          />
-        );
+        return <ArticleCard article={article} key={idx + 1} />;
       })}
     </div>
   );

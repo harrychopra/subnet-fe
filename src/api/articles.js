@@ -1,7 +1,13 @@
 import { baseUrl, throwResponseNotOKErr } from './base.js';
 
-export async function fetchArticles() {
-  const res = await fetch(`${baseUrl}/articles`);
+export async function fetchArticles(qpPairs) {
+  const url = new URL(`${baseUrl}/articles`);
+
+  qpPairs.forEach(([param, val]) => {
+    url.searchParams.set(param, val);
+  });
+
+  const res = await fetch(url.toString());
   if (!res.ok) await throwResponseNotOKErr(res);
 
   const { articles } = await res.json();
