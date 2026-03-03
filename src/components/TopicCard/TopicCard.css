@@ -1,0 +1,40 @@
+.topic-card {
+  padding: 2rem 0.85rem 1.5rem 0.85rem;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.topic-card:last-of-type {
+  border-bottom: 1px solid #ddd;
+}
+
+.topic-card .slug {
+  font-size: 0.85rem;
+}
+
+.topic-card .slug::before {
+  content: '/';
+  margin-right: 0.05rem;
+}
+
+.topic-card .description {
+  color: #777;
+  font-size: 0.8rem;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.topic-card .avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
